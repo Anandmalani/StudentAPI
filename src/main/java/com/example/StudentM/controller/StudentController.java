@@ -1,9 +1,11 @@
 package com.example.StudentM.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,6 +35,14 @@ public class StudentController {
     	return studentService.getStudent(studentId);
 		
 	}
+    @DeleteMapping
+    public void deleteStudent(@PathVariable Integer studentId) {
+    	studentService.deleteStudent(studentId);
+    }
 	
+    @PutMapping("/{studentId}")
+    public Student updateStudent(@PathVariable Integer studentId, @RequestBody Student s1) {
+    	return studentService.updateStudent(studentId, s1);
+    }
 
 }

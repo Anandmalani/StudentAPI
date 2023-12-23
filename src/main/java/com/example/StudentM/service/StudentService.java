@@ -27,6 +27,22 @@ public class StudentService {
 		return studentRepository.findById(studentId).get();
 		
 	}
+
+	public void deleteStudent(Integer studentId) {
+		
+		// TODO Auto-generated method stub
+		studentRepository.deleteById(studentId);;
+		
+	}
+
+	public Student updateStudent(Integer studentId, Student s1) {
+		// TODO Auto-generated method stub
+		Student s2=studentRepository.findById(studentId).get();
+		Integer id=s2.getId();
+		s1.setId(id);
+		studentRepository.save(s1);
+		return s1;
+	}
 	
 
 }
